@@ -1,16 +1,5 @@
 # TakeMeTour's Job Quest 2020 Edition
 
-Thank you for your interest in working at TakeMeTour. First, we would like to take a simple test on your coding skill.
-
-Please fork this repo and work on the test. After finishing the test, please send your repo to benz@takemetour.com (Subject: JavaScript Engineer Application). Or you can simply reply an email that we've send you job quest link.
-
-This quest has 3 parts
-- **Basic JavaScript/TypeScript + Algorithm** (Any job position **must** do this part)
-- **Front-end** (Only **Front-end** or **Full-stack** position **must** do this part)
-- **Back-end** (Only **Back-end** or **Full-stack** position **must** do this part)
-
-**Note:** Some answers can be answer in Thai language.
-
 ## Basic JavaScript/TypeScript + Algorithm
 
 We would like to test your basic knowledge on writing JavaScript or TypeScript, plus we also want to test your algorithm skill a little bit.
@@ -97,32 +86,23 @@ Buzz
 FizzBuzz
 ```
 
-## Front-End
-
-You are going to make a web application written with **React** which allow users to get some joke from **Chuck Norris**. His joke look like this.
-
-> Chuck Norris once ordered a Big Mac at Burger King, and got one.
-
-### Features
-- Users can get a joke from [Chuck Norris API](http://www.icndb.com/api/)
-- Users has options to change number of result jokes, user's first name and last name
-- How to display the result is up to you.
-
-### Technical description
-- Using data from [REST API](http://www.icndb.com/api/)
-- Using React to build the apps. (Create React Apps / Pure Webpack setup / Next.js is fine to me)
-- We allows you to use any CSS framework. (Or you don't want to use that, also OK to me)
-
-### Bonus
-- You can surprise me with any extra features from my requirement. Use your imagination!
 
 ### Front-end Questions
 
 1. Explain the what's similar & difference between `cookie` / `localStorage` / `sessionStorage`.
 
+ทั้งสามตัวเป็นการเก็บข้อมูลของ user ผ่าน web browser เช่นการเก็บ access token ใช้ส่งไปกับเวลาที่รีเควส server ให้ server ทราบว่ารีเควสที่ส่งมาเป็นของใคร
+cookie กับ localStorage ข้อมูลจะหายไปก็ต่อเมื่อเราทำการเคลียร์หรือกำหนดเวลาหมดอายุ
+sessionStorage ข้อมูลจะหายไปตอนปิด web browser หรือกำหนดเวลาหมดอายุ
+
 2. Today React have hooks. Do we still need a class component? If your answer is yes then which case that we still need to use class component.
 
+ตอนนี้ใช้ function companent
+
 3. Breifly describe how *Virtual DOM* works.
+
+เป็นการสร้างตัวแทน DOM ขึ้นมาไว้ใน memmory เมื่อมีการทำอะไรกับ ui ก็จะนำข้อมูลมาเปรียบเทียบกับตัวที่เก็บไว้ใน memmory ว่ามีแค่ส่วนไหนบ้างที่ต้องทำกา render ใหม่ ไม่ต้อง render ทั้งหมด
+
 
 4. Consider this React's components tree
 
@@ -132,51 +112,17 @@ Apps > ComponentA > ComponentB > ComponentC > ComponentD > ComponentE
 
 If we have a state at `Apps` component, and `ComponentE` component want to access that state value. How do you implements this?
 
+ใช้ Context API
+
 5. What different between using `relative` / `absolute` / `fixed` to position the element.
+relative จะแสดงผลต่อจากจุดที่มันอยู่
+absolute แสดงผลอิสระ จะอยู่ตรงไหนก็ได้ภายใต้ element ที่ครอบตัวมันอยู่
+fixed จะอ้างอิงตำแหน่งตัวมันเองจาก web browser จะไม่ขยับตามเวลาเราเลื่อน scroll bar
 
 6. Explain the different between using `callback` / `Promise` / `async await`. When to use and when not to.
+javascript เป็น asynchronous programming
+ทั้งสามตัวเราจะใช้เมื่อเราต้องการให้ฟังก์ชั่นก่อนหน้าทำงานให้เสร็จก่อนค่อยมาเรียกตัวมัน
+callback คือการส่งฟังก์ชั่นให้ไปเป็นพารามิเตอร์ของอีกฟังก์ชั่นหนึ่ง ไม่ควรใช้เมื่อเราต้องเรียกซ้อนกันไปเยอะๆทำให้เราไล่โค๊ดยาก
+Promise จะเก็บค่าก่อนหน้าที่เราต้องการให้เสร็จก่อนไว้ใน promise แล้วเราค่อยใช้ then() ค่านั้นออกมาจาก promise อีกที เราสามารถ then ต่อๆกันได้ แต่ต่อหลังจากดักจับ catch ไม่ได้ ถ้าต่อกันมาเยอะๆเราจะไม่รู้ว่า error มาจากตัวไหน
+async await  await ใช้ประกาศหน้าฟังก์ชั้นที่อยู่ใน async ฟังชั่น ให้หยุดทำงานจนกว่า async ฟังก์ชั่นจะทำงานเสร็จ ข้อดีคือโค๊ดดูง่าย สะอาดตา
 
-## Back-End
-
-You are going to made a simple **Thai's joke API**. And this API is follow to REST API pattern.
-
-Thai's joke API can allow user to explore, add, delete, like or dislike Thai's joke.
-
-### Endpoints
-- `GET /` Get all jokes.
-- `POST /` Add new joke.
-- `GET /:id` Get joke by id.
-- `DELETE /:id` Delete joke. (In case you hate it)
-- `POST /:id/like` Like a joke. (Because we don't have authentication system yet. Like spaming is fine here.)
-- `POST /:id/dislike` Dislike a joke. (Same as above. Dislike spaming is fine here.)
-
-### Technical description
-- All data must store to the database. Any database is fine. But we prefer **MongoDB**.
-- Back-end code must written in Node.js. Any library or helper tools is up to you (Express / Koa / Nest.js you name it).
-
-### Bonus
-- If you implemented simple authentication with username and password, and also allow logged-in user to create or delete the joke. You will get a bonus for this task.
-
-### Back-end Questions
-
-1. Explain First-party cookie & Third-party cookie
-
-2. Explain CAP Theorem.
-
-3. Considering two queries
-
-```javascript
-const searchIds = ['1', '2', '3', ...];
-
-const query1 = await Product.find({ id: { $in: searchIds } });
-
-const query2 = await Promise.all(searchIds.map(searchId => Product.find({ id: searchId })));
-```
-
-Which one is faster.
-
-4. Explain XSS / SQL Injection / Man in the Middle Attack, and how to prevent each attack type.
-
-5. Explain the different between using `callback` / `Promise` / `async await`. When to use and when not to.
-
-6. Explain how HTTP protocol works.
